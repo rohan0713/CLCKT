@@ -1,11 +1,13 @@
-package app.aura.clckt
+package app.aura.clckt.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import app.aura.clckt.databinding.ActivityMainBinding
+import app.aura.clckt.presentation.features.auth.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,5 +17,13 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                Intent(this@MainActivity, LoginActivity::class.java).also {
+                    startActivity(it)
+                }
+            }, 3000
+        )
     }
 }
