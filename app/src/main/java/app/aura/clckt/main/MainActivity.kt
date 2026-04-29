@@ -7,7 +7,7 @@ import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import app.aura.clckt.databinding.ActivityMainBinding
-import app.aura.clckt.presentation.features.auth.LoginActivity
+import app.aura.clckt.presentation.features.auth.activity.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             {
                 Intent(this@MainActivity, LoginActivity::class.java).also {
                     startActivity(it)
+                    finish()
                 }
             }, 3000
         )

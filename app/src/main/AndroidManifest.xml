@@ -13,7 +13,12 @@
         android:theme="@style/Theme.CLCKT"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.features.auth.LoginActivity"
+            android:name=".presentation.features.dashboard.DashboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/Theme.CLCKT" />
+        <activity
+            android:name=".presentation.features.auth.activity.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".main.MainActivity"
