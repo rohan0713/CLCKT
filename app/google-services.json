@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1047804838229",
+    "project_id": "clckt-3eb26",
+    "storage_bucket": "clckt-3eb26.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047804838229:android:6bcc27af69c5128a00efdc",
+        "android_client_info": {
+          "package_name": "app.aura.clckt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx7gOf2QzcEOBHFI8-ClaFZLp1GcSmwbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

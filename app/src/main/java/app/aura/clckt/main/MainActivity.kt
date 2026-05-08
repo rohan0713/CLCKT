@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import app.aura.clckt.databinding.ActivityMainBinding
 import app.aura.clckt.presentation.features.auth.activity.LoginActivity
+import app.aura.clckt.presentation.features.dashboard.DashboardActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                Intent(this@MainActivity, LoginActivity::class.java).also {
+                Intent(this@MainActivity, DashboardActivity::class.java).also {
                     startActivity(it)
                     finish()
                 }

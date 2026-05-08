@@ -12,19 +12,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import app.aura.clckt.presentation.features.dashboard.ui.theme.CLCKTTheme
+import app.aura.clckt.data.remote.RemoteConfigManager
 
 class DashboardActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        RemoteConfigManager.initConfig {
+            RemoteConfigManager.fetchAndActivate()
+        }
         enableEdgeToEdge()
         setContent {
             CLCKTTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainDashboardScreen()
             }
         }
     }
