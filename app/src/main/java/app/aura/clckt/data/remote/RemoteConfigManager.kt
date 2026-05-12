@@ -2,6 +2,7 @@ package app.aura.clckt.data.remote
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
+import app.aura.clckt.data.model.NearbyEvent
 import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -55,6 +56,7 @@ object RemoteConfigManager {
                             "user_name" to "John",
                             "welcome_message" to "Hey, ",
                             "event_name" to "Neon Noir Night",
+                            "logo_image" to "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070&auto=format&fit=crop",
                             "trending_list" to """
                                 [
                                   {
@@ -66,6 +68,22 @@ object RemoteConfigManager {
                                     "name": "Jazz at The Piano",
                                     "location": "Gurgaon Sector 15",
                                     "aura": 120
+                                  }
+                                ]
+                            """.trimIndent(),
+                            "nearby_list" to """
+                                [
+                                  {
+                                    "name": "Retro Rewind Fest",
+                                    "location": "Hauz Khas Village",
+                                    "aura": 120,
+                                    "distance": "1.2km"
+                                  },
+                                  {
+                                    "name": "Art in the Park",
+                                    "location": "Central Park",
+                                    "aura": 50,
+                                    "distance": "2.5km"
                                   }
                                 ]
                             """.trimIndent()
@@ -85,13 +103,38 @@ object RemoteConfigManager {
                     TrendingEvent(
                         name = obj.getString("name"),
                         location = obj.getString("location"),
-                        aura = obj.getInt("aura")
+                        aura = obj.getInt("aura"),
+                        imageUrl = obj.getString("logo_image")
                     )
                 )
             }
             list
         } catch (e: Exception) {
             Log.e("RemoteConfig", "Error parsing trending list", e)
+            emptyList()
+        }
+    }
+
+    fun getNearByItems(): List<NearbyEvent> {
+        val jsonString = remoteConfig.getString("nearby_list")
+        return try {
+            val jsonArray = JSONArray(jsonString)
+            val list = mutableListOf<NearbyEvent>()
+            for (i in 0 until jsonArray.length()) {
+                val obj = jsonArray.getJSONObject(i)
+                list.add(
+                    NearbyEvent(
+                        name = obj.getString("name"),
+                        location = obj.getString("location"),
+                        aura = obj.getInt("aura"),
+                        distance = obj.getString("distance"),
+                        imageUrl = obj.getString("image_url")
+                    )
+                )
+            }
+            list
+        } catch (e: Exception) {
+            Log.e("RemoteConfig", "Error parsing nearby list", e)
             emptyList()
         }
     }

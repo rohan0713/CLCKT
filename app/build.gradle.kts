@@ -1,3 +1,15 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+fun loadEnv(flavor: String): Properties {
+    val properties = Properties()
+    val envFile = project.rootProject.file("env/${flavor}.env")
+    if (envFile.exists()) {
+        properties.load(FileInputStream(envFile))
+    }
+    return properties
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -30,6 +42,25 @@ android {
             )
         }
     }
+
+    flavorDimensions += "environment"
+    productFlavors {
+        val devProps = loadEnv("dev")
+        create("dev") {
+            dimension = "environment"
+            buildConfigField("String", "BASE_URL", "\"${devProps.getProperty("BASE_URL", "https://dev.api.clckt.com/")}\"")
+        }
+        val qaProps = loadEnv("qa")
+        create("qa") {
+            dimension = "environment"
+            buildConfigField("String", "BASE_URL", "\"${qaProps.getProperty("BASE_URL", "https://qa.api.clckt.com/")}\"")
+        }
+        val prodProps = loadEnv("prod")
+        create("prod") {
+            dimension = "environment"
+            buildConfigField("String", "BASE_URL", "\"${prodProps.getProperty("BASE_URL", "https://api.clckt.com/")}\"")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,6 +72,7 @@ android {
     buildFeatures {
         viewBinding = true
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -77,4 +109,10 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.config)
+    implementation(libs.coil.compose)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
 }

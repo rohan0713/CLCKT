@@ -10,4 +10,5 @@
     <string name="continue_with_google">Continue with Google</string>
     <string name="skip_for_now">Skip for now, explore as guest</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_trending_item_detail">TrendingItemDetailActivity</string>
 </resources>

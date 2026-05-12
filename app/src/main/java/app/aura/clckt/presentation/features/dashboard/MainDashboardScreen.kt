@@ -1,11 +1,13 @@
 package app.aura.clckt.presentation.features.dashboard
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -30,6 +32,7 @@ import app.aura.clckt.presentation.features.dashboard.screens.ExploreScreen
 import app.aura.clckt.presentation.features.dashboard.screens.FeedScreen
 import app.aura.clckt.presentation.features.dashboard.screens.HomeScreen
 import app.aura.clckt.presentation.features.dashboard.screens.ProfileScreen
+import app.aura.clckt.presentation.features.details.TrendingItemDetailActivity
 import app.aura.clckt.presentation.features.dashboard.ui.theme.BackGroundColor
 import app.aura.clckt.presentation.features.dashboard.ui.theme.BorderColor
 import app.aura.clckt.presentation.features.dashboard.ui.theme.PrimaryColor
@@ -113,7 +116,17 @@ fun MainDashboardScreen() {
                 navController = navController,
                 startDestination = BottomNavDestination.Home.route
             ) {
-                composable(BottomNavDestination.Home.route) { HomeScreen() }
+                composable(BottomNavDestination.Home.route) {
+                    val context = LocalContext.current
+                    HomeScreen(onTrendingItemClick = { event ->
+                        val intent = Intent(context, TrendingItemDetailActivity::class.java).apply {
+                            putExtra("name", event.name)
+                            putExtra("location", event.location)
+                            putExtra("aura", event.aura)
+                        }
+                        context.startActivity(intent)
+                    })
+                }
                 composable(BottomNavDestination.Explore.route) { ExploreScreen() }
                 composable(BottomNavDestination.Feed.route) { FeedScreen() }
                 composable(BottomNavDestination.Profile.route) { ProfileScreen() }
