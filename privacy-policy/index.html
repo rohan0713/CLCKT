@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLCKT — Privacy Policy & Terms of Service</title>
+    <meta name="description" content="Official Privacy Policy and Terms of Service for CLCKT, a secure and dynamic smart camera monitoring and surveillance application.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><path fill='%230A0A0A' stroke='%231A1A1A' stroke-width='8' d='M 136,16 L 376,16 A 120,120 0 0 1 496,136 L 496,376 A 120,120 0 0 1 376,496 L 136,496 A 120,120 0 0 1 16,376 L 16,136 A 120,120 0 0 1 136,16 Z'/><path fill='none' stroke='%23D4FF00' stroke-width='26' d='M 256, 126 C 327.8, 126 386, 184.2 386, 256 C 386, 327.8 327.8, 386 256, 386 C 184.2, 386 126, 327.8 126, 256 C 126, 184.2 184.2, 126 256, 126 Z'/><path fill='none' stroke='%23D4FF00' stroke-width='26' stroke-linecap='round' stroke-linejoin='round' d='M 256 150 L 256 256 L 316 316'/></svg>">
+</head>
+<body>
+    <!-- Ambient Background Glows -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="logo-wrapper">
+                    <!-- Exact translation of ic_logo_icon.xml -->
+                    <svg viewBox="0 0 512 512" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#0A0A0A" stroke="#1A1A1A" stroke-width="8" d="M 136,16 L 376,16 A 120,120 0 0 1 496,136 L 496,376 A 120,120 0 0 1 376,496 L 136,496 A 120,120 0 0 1 16,376 L 16,136 A 120,120 0 0 1 136,16 Z" />
+                        <path fill="none" stroke="#D4FF00" stroke-width="26" d="M 256, 126 C 327.8, 126 386, 184.2 386, 256 C 386, 327.8 327.8, 386 256, 386 C 184.2, 386 126, 327.8 126, 256 C 126, 184.2 184.2, 126 256, 126 Z" />
+                        <path fill="none" stroke="#D4FF00" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" d="M 256 150 L 256 256 L 316 316" />
+                    </svg>
+                </div>
+                <span class="brand-name">CLCKT</span>
+            </div>
+            
+            <div class="tab-controls">
+                <button class="tab-btn active" onclick="switchTab('privacy')">Privacy Policy</button>
+                <button class="tab-btn" onclick="switchTab('terms')">Terms of Service</button>
+            </div>
+
+            <a href="mailto:support@clckt.aura.app" class="contact-btn">Support</a>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- HERO HEADER -->
+        <section class="hero-section">
+            <span class="badge">Legal Center</span>
+            <h1 id="hero-title">Privacy Policy</h1>
+            <p class="subtitle" id="hero-subtitle">Learn how CLCKT collects, uses, and safeguards your security configuration and surveillance data.</p>
+            <p class="last-updated">Last Updated: May 25, 2026</p>
+        </section>
+
+        <div class="layout-grid">
+            <!-- SIDEBAR NAV (DESKTOP) -->
+            <aside class="sidebar-nav" id="sidebar-privacy">
+                <div class="sidebar-sticky">
+                    <h3>Sections</h3>
+                    <ul class="nav-links">
+                        <li><a href="#p-introduction" class="active">1. Introduction</a></li>
+                        <li><a href="#p-data-collect">2. Information Collection</a></li>
+                        <li><a href="#p-data-use">3. How We Use Data</a></li>
+                        <li><a href="#p-data-store">4. Data Storage & Security</a></li>
+                        <li><a href="#p-permissions">5. Android Permissions</a></li>
+                        <li><a href="#p-third-party">6. Third-Party Partners</a></li>
+                        <li><a href="#p-deletion">7. Account & Data Deletion</a></li>
+                        <li><a href="#p-changes">8. Policy Updates</a></li>
+                        <li><a href="#p-contact">9. Contact Us</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <aside class="sidebar-nav hidden" id="sidebar-terms">
+                <div class="sidebar-sticky">
+                    <h3>Sections</h3>
+                    <ul class="nav-links">
+                        <li><a href="#t-agreement" class="active">1. Agreement to Terms</a></li>
+                        <li><a href="#t-services">2. Description of Service</a></li>
+                        <li><a href="#t-accounts">3. Account Registration</a></li>
+                        <li><a href="#t-behavior">4. Acceptable Use Policy</a></li>
+                        <li><a href="#t-intellectual">5. Proprietary Rights</a></li>
+                        <li><a href="#t-disclaimers">6. Disclaimer of Warranties</a></li>
+                        <li><a href="#t-limitation">7. Limitation of Liability</a></li>
+                        <li><a href="#t-termination">8. Termination</a></li>
+                        <li><a href="#t-contact">9. Governing Law & Support</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- LEGAL DOCUMENT PANEL -->
+            <article class="document-panel">
+                
+                <!-- PRIVACY POLICY CONTENT -->
+                <div id="content-privacy" class="tab-content active-content">
+                    <section id="p-introduction" class="content-section">
+                        <h2>1. Introduction</h2>
+                        <div class="text-block">
+                            <p>Welcome to <strong>CLCKT</strong> ("we", "our", "us"). We are committed to protecting your privacy and security. CLCKT is a smart camera monitoring and video surveillance application designed to let you manage your local security feeds, monitor live videos, schedule recordings, capture snapshots, and receive email alert notifications seamlessly.</p>
+                            <p>This Privacy Policy explains how we handle data and configurations within the CLCKT Android application. By installing and using the app, you agree to the practices outlined in this policy. If you do not agree, please do not install or use CLCKT.</p>
+                        </div>
+                    </section>
+
+                    <section id="p-data-collect" class="content-section">
+                        <h2>2. Information We Collect</h2>
+                        <div class="text-block">
+                            <p>We believe in data minimization. CLCKT acts primarily as a dashboard controller for your personal surveillance systems, and we limit the collection of your data as follows:</p>
+                            <ul>
+                                <li>
+                                    <strong>Account Credentials:</strong> If you use a Google account or standard login to access the system, we collect your email address, name, and basic profile information to authenticate your session.
+                                </li>
+                                <li>
+                                    <strong>Server and Camera Configurations:</strong> To hook into your smart camera streams, we store your configuration settings, server IP addresses, custom camera titles, recording schedules, and multi-select parameters.
+                                </li>
+                                <li>
+                                    <strong>User-Generated Snapshots & Bookmarks:</strong> Any local snapshots you capture (PNG/JPG frames) or recordings you bookmark are saved locally to your device storage or synced directly to your private remote surveillance servers, depending on your configuration.
+                                </li>
+                                <li>
+                                    <strong>Email Alerts Configurations:</strong> To deliver notifications when camera motions are triggered, we process and store the recipient email addresses and custom notification templates you set.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="p-data-use" class="content-section">
+                        <h2>3. How We Use Your Information</h2>
+                        <div class="text-block">
+                            <p>The information we collect is exclusively used to operate, maintain, and provide the core features of the CLCKT application:</p>
+                            <div class="feature-grid">
+                                <div class="feature-card">
+                                    <div class="f-num">01</div>
+                                    <h4>Stream Connection</h4>
+                                    <p>Linking the app securely to your designated live video feeds and processing server metadata.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="f-num">02</div>
+                                    <h4>Notification Systems</h4>
+                                    <p>Delivering motion detection and server offline warnings to the email lists configured by you.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="f-num">03</div>
+                                    <h4>Schedule Automation</h4>
+                                    <p>Validating and running user-defined recording intervals, duration routines, and active periods.</p>
+                                </div>
+                            </div>
+                            <p class="highlight-box">
+                                <strong>Important Note:</strong> We NEVER sell, monetize, rent, or lease your account information, server IP setups, camera feeds, or captured frames to any third-party advertisers or external agencies.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="p-data-store" class="content-section">
+                        <h2>4. Data Storage, Security, & Retention</h2>
+                        <div class="text-block">
+                            <p>Security is the cornerstone of CLCKT. We take industry-standard precautions to shield your data:</p>
+                            <ul>
+                                <li><strong>Device Encryption:</strong> Sensitive data such as session keys and remote authorization tokens are stored on your Android device using local secure encryption protocols (EncryptedSharedPreferences).</li>
+                                <li><strong>Transmission:</strong> All API requests, stream interactions, and remote configurations are conducted strictly over secured, industry-standard encrypted tunnels (HTTPS / WSS).</li>
+                                <li><strong>Local Media:</strong> Captured camera snapshots remain in your device's isolated storage directory unless explicitly exported, ensuring you maintain complete offline ownership of your media.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="p-permissions" class="content-section">
+                        <h2>5. Android System Permissions</h2>
+                        <div class="text-block">
+                            <p>To enable the application functionality, CLCKT requires the following system permission:</p>
+                            <table class="perm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Permission</th>
+                                        <th>Purpose</th>
+                                        <th>Classification</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>INTERNET</code></td>
+                                        <td>Enables communication with your surveillance servers, fetching configurations, and live-streaming camera footage.</td>
+                                        <td>Core / Mandatory</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>This permission is mandatory for the basic operation of the application. We do not secretly request background permissions (such as location or microphone) unless explicitly needed for a user-initiated action.</p>
+                        </div>
+                    </section>
+
+                    <section id="p-third-party" class="content-section">
+                        <h2>6. Third-Party Services</h2>
+                        <div class="text-block">
+                            <p>The application may communicate with trusted third-party SDKs to enhance experience and maintain stability:</p>
+                            <ul>
+                                <li><strong>Firebase Remote Config & Analytics:</strong> Used to dynamically adjust dashboard UI layouts, distribute feature announcements, and track non-personally identifiable diagnostic crashes. Refer to the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> for more details.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="p-deletion" class="content-section">
+                        <h2>7. Account & Data Deletion Rights</h2>
+                        <div class="text-block">
+                            <p>We respect your ownership of your data. You have the right to request deletion of your account and related configurations at any time.</p>
+                            <p>To initiate a data deletion request, you can simply click the data deletion button or email us at <a href="mailto:support@clckt.aura.app">support@clckt.aura.app</a> with your registered email identifier. We will process your request and permanently remove all configurations, email settings, and session credentials from our servers within 7 business days.</p>
+                        </div>
+                    </section>
+
+                    <section id="p-changes" class="content-section">
+                        <h2>8. Changes to this Privacy Policy</h2>
+                        <div class="text-block">
+                            <p>We may update our Privacy Policy from time to time. We will notify you of any adjustments by updating this website page and, where appropriate, publishing a notice inside the CLCKT mobile application. We recommend checking this page periodically to remain informed about how we protect your security data.</p>
+                        </div>
+                    </section>
+
+                    <section id="p-contact" class="content-section">
+                        <h2>9. Contact Us</h2>
+                        <div class="text-block">
+                            <p>If you have any questions or feedback regarding our privacy practices, please contact us at:</p>
+                            <div class="contact-card">
+                                <strong>CLCKT Support Department</strong><br>
+                                Email: <a href="mailto:support@clckt.aura.app">support@clckt.aura.app</a><br>
+                                Response SLA: Within 48 hours
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TERMS OF SERVICE CONTENT -->
+                <div id="content-terms" class="tab-content">
+                    <section id="t-agreement" class="content-section">
+                        <h2>1. Agreement to Terms</h2>
+                        <div class="text-block">
+                            <p>By downloading, installing, or utilizing the <strong>CLCKT</strong> application, you represent that you are at least 18 years of age (or the legal age of majority in your jurisdiction) and agree to be legally bound by these Terms of Service. If you do not accept these terms, you are prohibited from using this application and must uninstall it immediately.</p>
+                        </div>
+                    </section>
+
+                    <section id="t-services" class="content-section">
+                        <h2>2. Description of Service</h2>
+                        <div class="text-block">
+                            <p>CLCKT is a specialized dashboard utility tool designed to connect to, monitor, and configure client-owned surveillance servers and smart cameras. The app provides user interface shells, scheduler helpers, alarm tools, and viewing environments. CLCKT is not responsible for the hardware operations, physical data storage limits, or network bandwidth of your third-party surveillance equipment.</p>
+                        </div>
+                    </section>
+
+                    <section id="t-accounts" class="content-section">
+                        <h2>3. Account Registration & Security</h2>
+                        <div class="text-block">
+                            <p>Some features inside CLCKT require account authentication. You are entirely responsible for:</p>
+                            <ul>
+                                <li>Maintaining the confidentiality of your session keys, Google tokens, and passwords.</li>
+                                <li>Providing accurate, current, and complete registration information.</li>
+                                <li>Any activities, commands, or data modification made under your registered account.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="t-behavior" class="content-section">
+                        <h2>4. Acceptable Use Policy</h2>
+                        <div class="text-block">
+                            <p>When operating the CLCKT application, you agree NOT to:</p>
+                            <ul>
+                                <li>Use the application to conduct illegal surveillance, intercept private video streams without authorization, or violate privacy rights.</li>
+                                <li>Reverse-engineer, decompile, or tamper with the security filters, communication APIs, or internal layouts of the CLCKT software.</li>
+                                <li>Intentionally overload, spam, or degrade the notification servers or remote configuration delivery lines.</li>
+                                <li>Interfere with the dashboard security layers to access another user's server setup.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="t-intellectual" class="content-section">
+                        <h2>5. Proprietary & Intellectual Rights</h2>
+                        <div class="text-block">
+                            <p>All intellectual property rights, graphics, brand vectors, animations, layout structures, source code, and design tokens present in the CLCKT mobile application are owned by us or our licensors. You are granted a limited, personal, non-transferable, revocable license to utilize the application software strictly on your compatible Android devices in accordance with these Terms.</p>
+                        </div>
+                    </section>
+
+                    <section id="t-disclaimers" class="content-section">
+                        <h2>6. Disclaimer of Warranties</h2>
+                        <div class="text-block">
+                            <p class="alert-box">
+                                <strong>DISCLAIMER:</strong> THE APPLICATION IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTY OF ANY KIND. WE EXPRESSLY DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE VIDEO STREAM TRANSMISSION WILL BE UNINTERRUPTED, FREE OF DELAYS, OR ERROR-FREE.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="t-limitation" class="content-section">
+                        <h2>7. Limitation of Liability</h2>
+                        <div class="text-block">
+                            <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL CLCKT, ITS DEVELOPERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF PROFITS, DATA LOSS, SECURITY BREACHES, OR PHYSICAL PROPERTY BREAK-INS) ARISING OUT OF OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE THE APPLICATION SERVICES.</p>
+                        </div>
+                    </section>
+
+                    <section id="t-termination" class="content-section">
+                        <h2>8. Termination</h2>
+                        <div class="text-block">
+                            <p>We reserve the right, at our sole discretion, to suspend, terminate, or restrict your access to all or part of the CLCKT app services at any time, without prior notice or liability, if we determine you are violating these Terms of Service or compromising system security.</p>
+                        </div>
+                    </section>
+
+                    <section id="t-contact" class="content-section">
+                        <h2>9. Governing Law & Support</h2>
+                        <div class="text-block">
+                            <p>These Terms shall be governed and construed in accordance with the laws of your local jurisdiction, without regard to conflict of law principles. For support and legal disputes, please contact us at <a href="mailto:support@clckt.aura.app">support@clckt.aura.app</a>.</p>
+                        </div>
+                    </section>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <!-- Exact translation of ic_logo_icon.xml -->
+                <svg viewBox="0 0 512 512" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#0A0A0A" stroke="#1A1A1A" stroke-width="8" d="M 136,16 L 376,16 A 120,120 0 0 1 496,136 L 496,376 A 120,120 0 0 1 376,496 L 136,496 A 120,120 0 0 1 16,376 L 16,136 A 120,120 0 0 1 136,16 Z" />
+                    <path fill="none" stroke="#D4FF00" stroke-width="26" d="M 256, 126 C 327.8, 126 386, 184.2 386, 256 C 386, 327.8 327.8, 386 256, 386 C 184.2, 386 126, 327.8 126, 256 C 126, 184.2 184.2, 126 256, 126 Z" />
+                    <path fill="none" stroke="#D4FF00" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" d="M 256 150 L 256 256 L 316 316" />
+                </svg>
+                <span>CLCKT Security</span>
+            </div>
+            <p class="copyright">&copy; 2026 Aura Smart Tech. All rights reserved. Designed for Google Play Store compliance.</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Update active buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.toLowerCase().includes(tabId)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Update content visibility
+            const privacyContent = document.getElementById('content-privacy');
+            const termsContent = document.getElementById('content-terms');
+            const privacySidebar = document.getElementById('sidebar-privacy');
+            const termsSidebar = document.getElementById('sidebar-terms');
+            const heroTitle = document.getElementById('hero-title');
+            const heroSubtitle = document.getElementById('hero-subtitle');
+
+            if (tabId === 'privacy') {
+                privacyContent.classList.add('active-content');
+                termsContent.classList.remove('active-content');
+                privacySidebar.classList.remove('hidden');
+                termsSidebar.classList.add('hidden');
+                heroTitle.innerText = 'Privacy Policy';
+                heroSubtitle.innerText = 'Learn how CLCKT collects, uses, and safeguards your security configuration and surveillance data.';
+            } else {
+                privacyContent.classList.remove('active-content');
+                termsContent.classList.add('active-content');
+                privacySidebar.classList.add('hidden');
+                termsSidebar.classList.remove('hidden');
+                heroTitle.innerText = 'Terms of Service';
+                heroSubtitle.innerText = 'Read the terms, rules, and guidelines governing your usage of the CLCKT mobile dashboard.';
+            }
+
+            // Scroll back to top of document panel
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Highlight active section on scroll
+        window.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -80% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = document.querySelector(`.sidebar-nav:not(.hidden) .nav-links a[href="#${id}"]`);
+                        if (activeLink) {
+                            document.querySelectorAll('.sidebar-nav .nav-links a').forEach(link => {
+                                link.classList.remove('active');
+                            });
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.content-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
