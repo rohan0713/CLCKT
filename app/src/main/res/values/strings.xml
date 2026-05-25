@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CLCKT</string>
+    <string name="clckt">CLCKT</string>
+    <string name="sub_heading">Check outfits, earn aura points, and \ndiscover your vibe.</string>
+    <string name="tagline">CLOCK IT. OWN IT.</string>
+    <string name="enter_number">Enter your phone number</string>
+    <string name="otp">OTP</string>
+    <string name="continue_with_otp">Continue with OTP</string>
+    <string name="or">or</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="skip_for_now">Skip for now, explore as guest</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_trending_item_detail">TrendingItemDetailActivity</string>
+</resources>
