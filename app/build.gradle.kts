@@ -18,13 +18,13 @@ plugins {
 
 android {
     namespace = "app.aura.clckt"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "app.aura.clckt"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
+        targetSdk = 35
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -35,11 +35,16 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
+            ndk {
+                debugSymbolLevel = "SYMBOL_TABLE"
+            }
         }
     }
 
@@ -49,16 +54,19 @@ android {
         create("dev") {
             dimension = "environment"
             buildConfigField("String", "BASE_URL", "\"${devProps.getProperty("BASE_URL", "https://dev.api.clckt.com/")}\"")
+            buildConfigField("String", "GEMINI_API_KEY", "\"${devProps.getProperty("GEMINI_API_KEY", "")}\"")
         }
         val qaProps = loadEnv("qa")
         create("qa") {
             dimension = "environment"
             buildConfigField("String", "BASE_URL", "\"${qaProps.getProperty("BASE_URL", "https://qa.api.clckt.com/")}\"")
+            buildConfigField("String", "GEMINI_API_KEY", "\"${qaProps.getProperty("GEMINI_API_KEY", "")}\"")
         }
         val prodProps = loadEnv("prod")
         create("prod") {
             dimension = "environment"
             buildConfigField("String", "BASE_URL", "\"${prodProps.getProperty("BASE_URL", "https://api.clckt.com/")}\"")
+            buildConfigField("String", "GEMINI_API_KEY", "\"${prodProps.getProperty("GEMINI_API_KEY", "")}\"")
         }
     }
     compileOptions {
@@ -67,6 +75,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf("-Xskip-metadata-version-check")
     }
 
     buildFeatures {
@@ -75,7 +84,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -92,6 +101,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -115,4 +125,5 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
+    implementation(libs.firebase.ai)
 }

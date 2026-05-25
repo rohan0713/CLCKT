@@ -23,7 +23,11 @@ class DashboardActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CLCKTTheme {
-                MainDashboardScreen()
+                if (app.aura.clckt.core.PhaseConfig.isPhase2Enabled) {
+                    MainDashboardScreen()
+                } else {
+                    app.aura.clckt.presentation.features.aura.Phase1ScannerScreen()
+                }
             }
         }
     }

@@ -118,11 +118,9 @@ fun MainDashboardScreen() {
             ) {
                 composable(BottomNavDestination.Home.route) {
                     val context = LocalContext.current
-                    HomeScreen(onTrendingItemClick = { event ->
+                    HomeScreen(onTrendingItemClick = { event: app.aura.clckt.data.model.PlacesItem ->
                         val intent = Intent(context, TrendingItemDetailActivity::class.java).apply {
-                            putExtra("name", event.name)
-                            putExtra("location", event.location)
-                            putExtra("aura", event.aura)
+                            putExtra("event", event)
                         }
                         context.startActivity(intent)
                     })

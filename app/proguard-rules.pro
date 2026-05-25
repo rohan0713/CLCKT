@@ -12,10 +12,16 @@
 #   public *;
 #}
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Preservation of stack trace details for deobfuscated crash reports in Play Console
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Keep Gson serialization metadata and serialized fields
+-keepattributes Signature
+-keepattributes *Annotation*
+-keepclassmembers class * {
+    @com.google.gson.annotations.SerializedName <fields>;
+}
+
+# Keep the Gemini/Firebase AI remote data transfer objects intact
+-keep class app.aura.clckt.data.remote.** { *; }

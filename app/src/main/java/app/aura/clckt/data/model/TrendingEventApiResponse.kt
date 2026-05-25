@@ -1,6 +1,7 @@
 package app.aura.clckt.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class TrendingEventApiResponse(
     @SerializedName("places")
@@ -11,7 +12,7 @@ data class TrendingEventApiResponse(
 
     @SerializedName("count")
     val count: Int? = null
-)
+) : Serializable
 
 data class PlacesItem(
     @SerializedName("image_url")
@@ -40,7 +41,7 @@ data class PlacesItem(
 
     @SerializedName("aura")
     val aura: Aura? = null
-)
+) : Serializable
 
 data class CheckinsItem(
     @SerializedName("style_tag")
@@ -60,7 +61,7 @@ data class CheckinsItem(
 
     @SerializedName("aura_points")
     val auraPoints: Int? = null
-)
+) : Serializable
 
 data class Timing(
     @SerializedName("date")
@@ -77,7 +78,7 @@ data class Timing(
 
     @SerializedName("is_live")
     val isLive: Boolean? = null
-)
+) : Serializable
 
 data class Location(
     @SerializedName("address")
@@ -94,7 +95,7 @@ data class Location(
 
     @SerializedName("lat")
     val lat: Double? = null
-)
+) : Serializable
 
 data class Aura(
     @SerializedName("base_points")
@@ -108,4 +109,4 @@ data class Aura(
 
     @SerializedName("bonus_multiplier")
     val bonusMultiplier: Double? = null
-)
+) : Serializable

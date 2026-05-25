@@ -4,6 +4,6 @@ class ApiEndpoints {
 
     companion object {
 
-        const val getTrendingEvents = "api/v1/trending-places";
+        const val GetTrendingEvents = "api/v1/trending-places";
     }
 }

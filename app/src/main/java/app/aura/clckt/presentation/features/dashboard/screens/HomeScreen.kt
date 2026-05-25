@@ -65,9 +65,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
+import app.aura.clckt.presentation.viewmodel.TrendingViewModel
+import app.aura.clckt.presentation.viewmodel.TrendingUiState
 import app.aura.clckt.data.model.NearbyEvent
-import app.aura.clckt.data.model.TrendingEvent
-import app.aura.clckt.data.remote.ApiClient
+import app.aura.clckt.data.model.PlacesItem
+import app.aura.clckt.data.remote.NetworkClient
+import app.aura.clckt.data.repository.TrendingRepositoryImpl
 import app.aura.clckt.data.remote.RemoteConfigManager
 import app.aura.clckt.presentation.features.dashboard.ui.theme.BackGroundColor
 import app.aura.clckt.presentation.features.dashboard.ui.theme.BorderColor
@@ -84,7 +89,10 @@ import app.aura.clckt.presentation.features.dashboard.ui.theme.WhiteColorText
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onTrendingItemClick: (TrendingEvent) -> Unit) {
+fun HomeScreen(
+    onTrendingItemClick: (PlacesItem) -> Unit,
+    viewModel: TrendingViewModel = viewModel()
+) {
 
     val refreshState = rememberPullToRefreshState()
     var count by remember { mutableIntStateOf(0) }
@@ -93,20 +101,17 @@ fun HomeScreen(onTrendingItemClick: (TrendingEvent) -> Unit) {
     if (refreshState.isRefreshing) {
         LaunchedEffect(true) {
             RemoteConfigManager.fetchAndActivate {
+                viewModel.fetchTrendingEvents()
                 refreshTrigger++
                 refreshState.endRefresh()
             }
         }
     }
 
-    val trendingEvents by produceState(
-        initialValue = emptyList<TrendingEvent>(),
-        key1 = refreshTrigger,
-        key2 = RemoteConfigManager.isConfigLoaded.value
-    ) {
-        value = withContext(Dispatchers.Default) {
-            ApiClient.getTrendingEvents()
-        }
+    val uiState by viewModel.uiState.collectAsState()
+    val trendingEvents = when (val state = uiState) {
+        is TrendingUiState.Success -> state.events
+        else -> emptyList()
     }
 
     val nearbyEvents by produceState(
@@ -166,7 +171,7 @@ fun HomeScreen(onTrendingItemClick: (TrendingEvent) -> Unit) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    items(trendingEvents, key = { it.name }) { event ->
+                    items(trendingEvents, key = { it.id ?: it.name ?: it.hashCode() }) { event ->
                         TrendingItems(
                             event = event,
                             modifier = Modifier
@@ -426,7 +431,7 @@ fun AuraScoreSection() {
 }
 
 @Composable
-fun TrendingItems(event: TrendingEvent, modifier: Modifier = Modifier) {
+fun TrendingItems(event: PlacesItem, modifier: Modifier = Modifier) {
 
     val titleStyle = remember {
         PrimaryTextStyle.copy(
@@ -467,7 +472,7 @@ fun TrendingItems(event: TrendingEvent, modifier: Modifier = Modifier) {
         Column {
 
             AsyncImage(
-                model = event.imageUrl,
+                model = event.imageUrl ?: "",
                 contentDescription = "Trending Image",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -482,11 +487,11 @@ fun TrendingItems(event: TrendingEvent, modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp)
             ) {
                 Text(
-                    text = event.name, style = titleStyle
+                    text = event.name ?: "", style = titleStyle
                 )
                 Spacer(modifier = Modifier.size(4.dp))
                 Text(
-                    text = event.location, style = subtitleStyle
+                    text = event.location?.city ?: event.location?.address ?: "", style = subtitleStyle
                 )
                 Spacer(modifier = Modifier.size(16.dp))
                 Row(
@@ -510,7 +515,7 @@ fun TrendingItems(event: TrendingEvent, modifier: Modifier = Modifier) {
                             .padding(horizontal = 16.dp, vertical = 6.dp)
                     ) {
                         Text(
-                            text = "+${event.aura} aura", style = auraBadgeStyle
+                            text = "+${event.aura?.basePoints ?: 0} aura", style = auraBadgeStyle
                         )
                     }
                     Box(

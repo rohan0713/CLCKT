@@ -4,11 +4,11 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import app.aura.clckt.data.model.NearbyEvent
 import com.google.firebase.FirebaseApp
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import com.google.firebase.Firebase
+import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.remoteConfigSettings
 import org.json.JSONArray
-import app.aura.clckt.data.model.TrendingEvent
+
 
 object RemoteConfigManager {
 
@@ -92,19 +92,23 @@ object RemoteConfigManager {
         }
     }
 
-    fun getTrendingList(): List<TrendingEvent> {
+    fun getTrendingList(): List<app.aura.clckt.data.model.PlacesItem> {
         val jsonString = remoteConfig.getString("trending_list")
         return try {
-            val jsonArray = JSONArray(jsonString)
-            val list = mutableListOf<TrendingEvent>()
+            val jsonArray = JSONArray(org.json.JSONTokener(jsonString))
+            val list = mutableListOf<app.aura.clckt.data.model.PlacesItem>()
             for (i in 0 until jsonArray.length()) {
                 val obj = jsonArray.getJSONObject(i)
                 list.add(
-                    TrendingEvent(
+                    app.aura.clckt.data.model.PlacesItem(
+                        id = "",
                         name = obj.getString("name"),
-                        location = obj.getString("location"),
-                        aura = obj.getInt("aura"),
-                        imageUrl = obj.getString("logo_image")
+                        location = app.aura.clckt.data.model.Location(city = obj.getString("location")),
+                        aura = app.aura.clckt.data.model.Aura(basePoints = obj.getInt("aura")),
+                        imageUrl = obj.getString("logo_image"),
+                        description = "",
+                        timing = app.aura.clckt.data.model.Timing(display = "", isLive = false),
+                        checkins = emptyList()
                     )
                 )
             }
@@ -118,7 +122,7 @@ object RemoteConfigManager {
     fun getNearByItems(): List<NearbyEvent> {
         val jsonString = remoteConfig.getString("nearby_list")
         return try {
-            val jsonArray = JSONArray(jsonString)
+            val jsonArray = JSONArray(org.json.JSONTokener(jsonString))
             val list = mutableListOf<NearbyEvent>()
             for (i in 0 until jsonArray.length()) {
                 val obj = jsonArray.getJSONObject(i)
@@ -141,7 +145,7 @@ object RemoteConfigManager {
 
     fun fetchAndActivate(onComplete: (Boolean) -> Unit = {}) {
         Log.d("RemoteConfig", "Manual fetch started...")
-        remoteConfig.fetchAndActivate().addOnCompleteListener { task ->
+        remoteConfig.fetchAndActivate().addOnCompleteListener { task: com.google.android.gms.tasks.Task<Boolean> ->
             if (task.isSuccessful) {
                 val updated = task.result
                 val value = remoteConfig.getString("event_name")
